@@ -10,7 +10,7 @@ import "log"
 func ThreeWayPartition(s []int, a, b int) {
 	// lo: boundary index of ints < a
 	// i: index of the current int under consideration
-	// up: boundary index of ints > b
+	// up: boundary index of ints >= b
 	// INVARIANT: lo <= i <= up
 	lo, i, up := 0, 0, len(s)-1
 	log.Printf("input:\n\ts: %v\n\ta: %v\n\tb: %v", s, a, b)
@@ -21,7 +21,7 @@ func ThreeWayPartition(s []int, a, b int) {
 			s[lo], s[i] = s[i], s[lo]
 			lo++
 			i++
-		case s[i] > b:
+		case s[i] >= b:
 			log.Printf("visiting %v:\tmove right", s[i])
 			s[up], s[i] = s[i], s[up]
 			up--

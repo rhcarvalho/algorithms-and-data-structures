@@ -3,7 +3,8 @@ package sort
 import "log"
 
 // ThreeWayPartition rearranges s such that elements in the range (-inf, a) come
-// first, [a, b) next, and [b, +inf) last.
+// first, [a, b) next, and [b, +inf) last, preserving the order of elements in
+// the same partition.
 // Though not the same, this is based on what is described in the Dutch national
 // flag problem: https://en.wikipedia.org/wiki/Dutch_national_flag_problem
 func ThreeWayPartition(s []int, a, b int) {
@@ -28,5 +29,11 @@ func ThreeWayPartition(s []int, a, b int) {
 			log.Printf("visiting %v:\tgo to next", s[i])
 			i++
 		}
+	}
+	// reverse upper group to bring back the original order
+	for i, j := up+1, len(s)-1; i < j; {
+		s[i], s[j] = s[j], s[i]
+		i++
+		j--
 	}
 }

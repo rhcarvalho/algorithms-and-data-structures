@@ -11,6 +11,7 @@ var params = []struct {
 	want []int
 }{
 	{[]int{2, 7, 1, -92}, 0, 3, []int{-92, 2, 1, 7}},
+	{[]int{2, 5, 6, 8, 7, 1, -92}, 0, 3, []int{-92, 2, 1, 5, 6, 8, 7}},
 }
 
 func TestThreeWayPartition(t *testing.T) {
